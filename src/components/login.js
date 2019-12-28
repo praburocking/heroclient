@@ -41,8 +41,8 @@ const Login=(props)=> {
        <div className="Login">
        <h2 style={{textAlign:"center"}}>LOGIN</h2>
       <Form onSubmit={handleSubmit}>
-        <FormGroup controlId="user_name" bsSize="large">
-          <Form.Label>Email</Form.Label>
+        <FormGroup controlId="user_name" bssize="large">
+          <Form.Label>User ID</Form.Label>
           <FormControl
             autoFocus
             type="text"
@@ -51,7 +51,7 @@ const Login=(props)=> {
             onChange={e => set_user_name(e.target.value)}
           />
         </FormGroup>
-        <FormGroup controlId="password" bsSize="large">
+        <FormGroup controlId="password" bssize="large">
           <Form.Label>Password</Form.Label>
           <FormControl
             value={password}
@@ -59,7 +59,7 @@ const Login=(props)=> {
             type="password"
           />
         </FormGroup>
-        <Button block bsSize="large" disabled={!validateForm()} type="submit">
+        <Button block bssize="large" disabled={!validateForm()} type="submit">
           Login
         </Button>
       </Form>

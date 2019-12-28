@@ -4,21 +4,18 @@ import { Button, FormGroup, FormControl ,Form,Media,Container,Row,Col} from "rea
 const Product_info=(props)=>
 {
     return(
-        <Media>
+        <Media style={{paddingTop:"100px"}}>
   <img
     width={64}
     height={64}
     className="mr-3"
-    src="holder.js/64x64"
+    src="logo192.png"
     alt="Generic placeholder"
   />
   <Media.Body>
-    <h5>Media Heading</h5>
+    <h5>Meet your Heros</h5>
     <p>
-      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-      ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,
-      tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
-      Donec lacinia congue felis in faucibus.
+    Come and Create your heros with us, you can add new heros, edit them, give power to them, create an arch enemy, view their stats on dashboard and much more...
     </p>
   </Media.Body>
 </Media>

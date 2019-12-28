@@ -41,6 +41,15 @@ export function setCookie(cname, cvalue, exdays) {
 
   }
 
+  export const deleteAuthorizationCookies=()=>
+  {
+      deleteCookie("token");
+      deleteCookie("username");
+      deleteCookie("id");
+
+  }
+
+
    export const setAuthorizationHeader=()=>
   {
     const token="bearer "+getCookie("token");
@@ -60,5 +69,17 @@ export function setCookie(cname, cvalue, exdays) {
       return token;
     }
 
+  }
+
+  export const state_to_props=(store)=>
+  {
+      return ({user:store.user,auth:store.auth,hero:store.hero})
+  }
+
+
+  export const find_user_cookie_put_to_store=(store)=>
+  {
+    const user_data={username:getCookie("username"),token:getCookie("token"),id:getCookie("id")};
+    store.dispatch({type:"USER_INIT",data:user_data});
   }
   

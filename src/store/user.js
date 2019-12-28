@@ -7,7 +7,7 @@ const userReducer=(state=[],action)=>
         return action.data
         }
         else{
-            return []
+            return state
         }
     
 }

@@ -24,3 +24,8 @@ export const login=(loginData)=>
 {   console.log("loginData ",loginData);
     return axios.post(login_url,loginData).then(response=>response).catch(error=>error.response);
 }
+
+export const get_hero=()=>
+{
+return axios.get(hero_url,setAuthorizationHeader()).then(response=>response).catch((error)=>error.response);
+}
