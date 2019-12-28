@@ -29,3 +29,8 @@ export const get_hero=()=>
 {
 return axios.get(hero_url,setAuthorizationHeader()).then(response=>response).catch((error)=>error.response);
 }
+
+export const search_hero=(search)=>
+{
+return axios.get(hero_url+"/search?search_term="+search,setAuthorizationHeader()).then(response=>response).catch((error)=>error.response);
+}

@@ -8,9 +8,9 @@ import {state_to_props} from '../util/common_utils'
 
 
 const Dash_board=(props)=>
-{
+{ 
     console.log("dash board ",props);
-    return(<Nav_bar_main username={props.user.username}/>)
+    return(<Nav_bar_main username={props.user.username} is_searh={false} />)
     
 }
 

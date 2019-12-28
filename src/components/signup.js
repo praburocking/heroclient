@@ -40,16 +40,17 @@ const Signup=(props)=> {
        <h2 style={{textAlign:"center"}}>SIGNUP</h2>
       <Form onSubmit={handleSubmit}>
 
-      <FormGroup controlId="name" bsSize="large">
+      <FormGroup controlId="name" bssize="large">
           <Form.Label>Name</Form.Label>
           <FormControl
             autoFocus
             type="text"
+            name="name"
            
           />
         </FormGroup>
 
-        <FormGroup controlId="email" bsSize="large">
+        <FormGroup controlId="email" bssize="large">
           <Form.Label>Email</Form.Label>
           <FormControl
             autoFocus
@@ -60,7 +61,7 @@ const Signup=(props)=> {
         </FormGroup>
 
 
-        <FormGroup controlId="password" bsSize="large">
+        <FormGroup controlId="password" bssize="large">
           <Form.Label>Password</Form.Label>
           <FormControl
             value={password}
@@ -70,7 +71,7 @@ const Signup=(props)=> {
         </FormGroup>
 
       
-        <Button block bsSize="large" disabled={!validateForm()} type="submit">
+        <Button block bssize="large" disabled={!validateForm()} type="submit">
           Signup
         </Button>
       </Form>
