@@ -1,6 +1,7 @@
 @media all and (min-width: 480px) {
     .Login {
       padding: 60px 0;
+      padding-right: 0px;
     }
   
     .Login form {
@@ -9,7 +10,7 @@
     }
   }
 
-  padding
+  /* padding
   {
       padding: 15px;
-  }
+  } */

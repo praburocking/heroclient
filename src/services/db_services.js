@@ -1,7 +1,10 @@
 import axios from'axios'
 import {setAuthorizationHeader} from '../util/common_utils'
+require('dotenv').config()
 
-let url="http://localhost:3001/api/"
+console.log("server url",process.env.SERVER_URL);
+
+let url=process.env.SERVER_URL
 
 let hero_url=url+"hero";
 let login_url=url+"login";
@@ -33,4 +36,9 @@ return axios.get(hero_url,setAuthorizationHeader()).then(response=>response).cat
 export const search_hero=(search)=>
 {
 return axios.get(hero_url+"/search?search_term="+search,setAuthorizationHeader()).then(response=>response).catch((error)=>error.response);
+}
+
+export const add_hero=(hero)=>
+{
+return axios.post(hero_url,hero,setAuthorizationHeader()).then(response=>response).catch((error)=>error.response);
 }

@@ -31,7 +31,19 @@ const Nav_bar_main=(props)=>
     <div>
         <Navbar bg="primary" expand="lg" variant="dark">
       
-    <Navbar.Brand href="#home">Heros</Navbar.Brand>
+    <Navbar.Brand >
+      
+    <img
+        src="batman-512.png"
+        width="30"
+        height="30"
+        className="d-inline-block align-top"
+        alt="React Bootstrap logo"
+      />{' '}
+      Heros
+
+
+    </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="mr-auto">

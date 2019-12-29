@@ -6,10 +6,10 @@ const Product_info=(props)=>
     return(
         <Media style={{paddingTop:"100px"}}>
   <img
-    width={64}
-    height={64}
+    width={125}
+    height={125}
     className="mr-3"
-    src="logo192.png"
+    src="batman-512.png"
     alt="Generic placeholder"
   />
   <Media.Body>

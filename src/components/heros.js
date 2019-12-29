@@ -10,11 +10,12 @@ import Create_hero from './create_hero'
 
 const   get_heros=async (hero_handler)=>
 {
-
     let heros=await get_hero();
-    heros=heros.data
-    console.log("db heros ",heros);
-    hero_handler(heros);
+    if(heros.status===200)
+    {
+    console.log("db heros ",heros.data);
+    hero_handler(heros.data);
+    }
     //store.dispatch({type:"HERO_INIT",data:heros})
 }
 
@@ -37,7 +38,7 @@ const Heros=(props)=>
       <div  style={{padding:"15px"}}>
         <Button className="justify-content-end" onClick={()=>setCreateHero(true)}>+ New Hero</Button>
         </div>
-    <Table striped hover >
+    <Table striped hover responsive={true}>
   <thead>
    
     <tr>
@@ -47,13 +48,15 @@ const Heros=(props)=>
       <th>Power</th>
       <th>Country</th>
       <th>Color</th>
+      <th>Weapons</th>
+      <th>Arch Enemy</th>
     </tr>
   </thead>
   <tbody>
-   { (props.hero!==undefined||props.hero.length!==0 ) && props.hero.map((hero,id)=><tr key={id}><td>{hero.name}</td><td>{hero.real_name}</td><td>{hero.power}</td><td>{hero.country}</td><td>{hero.color}</td></tr>)}
+   { (props.hero!==undefined||props.hero.length!==0 ) && props.hero.map((hero)=><tr key={hero.id}><td>{hero.name}</td><td>{hero.real_name}</td><td>{hero.power}</td><td>{hero.country}</td><td>{hero.color}</td><td>{hero.weapon}</td><td>{hero.arch_enemy}</td></tr>)}
   </tbody>
 </Table>
-{(props.hero===undefined||props.hero.length===0 ) &&<div className="justify-content-center"><h3>Getting your heros here... </h3></div>}
+{(props.hero===undefined||props.hero.length===0 ) &&<div className="d-flex justify-content-center"><h3>Getting your heros here... </h3></div>}
 <Create_hero  show={showCreateHero} onHide={() => setCreateHero(false)}/>
     </div>
     </div>

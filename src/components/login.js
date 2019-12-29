@@ -35,9 +35,9 @@ const Login=(props)=> {
     <Container >
       <Row>
         <Col xs={12} md={7}>
-    <Product_info md={{}}/>
+    <Product_info />
 </Col>
-<Col xs={12} md={5}>
+<Col xs={12} md={{offset:"0"}}>
        <div className="Login">
        <h2 style={{textAlign:"center"}}>LOGIN</h2>
       <Form onSubmit={handleSubmit}>
