@@ -60,10 +60,10 @@ const Nav_bar_main=(props)=>
       </Form> }
     
       <Navbar.Collapse className="justify-content-end">
-    <Navbar.Text as={Button} onClick={()=>logout(props.history)}>
-      Signed in as: <a href="#login">{props.username}</a>
-      
+    <Navbar.Text >
+      Signed in as: <Link href="" to="/user">{props.username}</Link>{' '}
     </Navbar.Text>
+    <Button variant="danger" onClick={()=>logout(props.history)} style={{marginLeft:"7px"}}> Sign-out</Button>
   </Navbar.Collapse>
 
   </Navbar>

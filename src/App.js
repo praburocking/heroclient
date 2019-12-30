@@ -29,6 +29,7 @@ function App(props) {
       <Route exact path ="/dashboard" render={()=>verifyAndGetToken()?<Dash_board/>:<Redirect to="/login"/>}/>
       <Route exact path ="/heros" render={()=>verifyAndGetToken()?<Heros/>:<Redirect to="/login"/>}/>
       <Route exact path="/" render={()=>verifyAndGetToken()?<Redirect to="/dashboard"/>:<Redirect to="/login"/>}/>
+      <Route exact path="*" render={()=>verifyAndGetToken()?<Redirect to="/dashboard"/>:<Redirect to="/login"/>}/>
       </Router>
       </Provider>
       

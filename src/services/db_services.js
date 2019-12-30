@@ -5,6 +5,8 @@ require('dotenv').config()
 console.log("server url",process.env.SERVER_URL);
 
 let url=process.env.SERVER_URL
+//url="http://localhost:3001/api/"
+url="https://prabuheros-server.herokuapp.com/api/"
 
 let hero_url=url+"hero";
 let login_url=url+"login";
