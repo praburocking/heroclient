@@ -1,20 +1,22 @@
 
-import React from 'react'
+import React,{useState} from 'react'
 import {Alert} from 'react-bootstrap'
 
 function Custom_alert(props) {
-    const [show, setShow] = useState(true);
+   
   
-    if (show) {
+    if (props.error!==undefined && props.error.show) {
       return (
-        <Alert variant={props.variant} onClose={() => setShow(false)} dismissible>
-          <Alert.Heading>{props.heading}</Alert.Heading>
+        <Alert variant={props.error.variant} onClose={() => props.setError({...props.error,show:false})} dismissible>
+          <Alert.Heading>{props.error.heading}</Alert.Heading>
           <p>
-           {props.content}
+           {props.error.content}
           </p>
         </Alert>
       );
     }
+    else
+    return(<></>);
     
   }
   
