@@ -34,7 +34,7 @@ const Nav_bar_main=(props)=>
     <Navbar.Brand >
       
     <img
-        src="batman-512.png"
+        src="/batman-512.png"
         width="30"
         height="30"
         className="d-inline-block align-top"

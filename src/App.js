@@ -10,6 +10,7 @@ import store from './store/store'
 import { Provider } from 'react-redux'
 import Dash_board from './components/dash_board'
 import {verifyAndGetToken,find_user_cookie_put_to_store} from './util/common_utils'
+import DetailView from './components/detailpage'
 
 
 
@@ -30,6 +31,7 @@ function App(props) {
       <Route exact path ="/heros" render={()=>verifyAndGetToken()?<Heros/>:<Redirect to="/login"/>}/>
       <Route exact path="/" render={()=>verifyAndGetToken()?<Redirect to="/dashboard"/>:<Redirect to="/login"/>}/>
       <Route exact path="*" render={()=>verifyAndGetToken()?<Redirect to="/dashboard"/>:<Redirect to="/login"/>}/>
+      <Route exact path ="/heros/:id" render={({match})=>verifyAndGetToken()?<DetailView currentHero={match.params.id}/>:<Redirect to="/login"/>}/>
       </Router>
       </Provider>
       

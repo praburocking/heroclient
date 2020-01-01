@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, FormGroup, FormControl ,Form,Media,Container,Row,Col} from "react-bootstrap";
+import { Button, FormGroup, FormControl ,Form,Media,Container,Row,Col,Spinner} from "react-bootstrap";
 import "./login.css";
 import {Public_navbar} from './nav_bar'
 import {connect} from 'react-redux'
@@ -16,22 +16,26 @@ const Login=(props)=> {
   const [user_name, set_user_name] = useState("");
   const [password, setPassword] = useState("");
   const [error,setError]=useState({show:false,heading:"invalid Credentials",content:"please retry with proper Username/Password",variant:"danger"});
+  const [spinner,setSpinner]=useState(false);
 
   function validateForm() {
-    return user_name.length > 0 && password.length > 0;
+    return user_name.length > 0 && password.length > 0 && !spinner;
+
   }
   console.log("user",props.user);
   async function handleSubmit(event) {
     event.preventDefault();
+
+    setSpinner(true);
     const res=await login({user_name:event.target.user_name.value,password:event.target.password.value})
         console.log("response",res);
         if(res && constants.errorResponse.includes(res.status))
         {
-         // console.log("error");
           if(res.status===401)
           {
             console.log("error");
          setError({...error,show:true})
+         setSpinner(false);
           }
           else
           {
@@ -39,6 +43,7 @@ const Login=(props)=> {
             {show:true,
             heading:res.data.message,
             content:""});
+            setSpinner(false);
           }
         }
         else if(res)
@@ -64,7 +69,7 @@ const Login=(props)=> {
 
        <Custom_alert  error={error} setError={setError}/>
        {console.log("error in jsx",error)}
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} noValidate validated={false}>
         <FormGroup controlId="user_name" bssize="large">
           <Form.Label>User ID</Form.Label>
           <FormControl
@@ -72,8 +77,12 @@ const Login=(props)=> {
             type="text"
             value={user_name}
             name="user_name"
+            required
             onChange={e => set_user_name(e.target.value)}
           />
+          <Form.Control.Feedback type="invalid">
+            please enter the user ID
+          </Form.Control.Feedback>
         </FormGroup>
         <FormGroup controlId="password" bssize="large">
           <Form.Label>Password</Form.Label>
@@ -81,10 +90,23 @@ const Login=(props)=> {
             value={password}
             onChange={e => setPassword(e.target.value)}
             type="password"
+            required
           />
+          <Form.Control.Feedback type="invalid">
+            please enter the password
+          </Form.Control.Feedback>
         </FormGroup>
-        <Button block bssize="large" disabled={!validateForm()} type="submit">
-          Login
+        <Button block bssize="large" disabled={ !validateForm() } type="submit" >
+    {spinner && <Spinner
+      as="span"
+      animation="border"
+      size="sm"
+      role="status"
+      aria-hidden="true"
+      
+    />}{' '}
+    {spinner && "Logging You In"}
+        {!spinner &&"Login"}
         </Button>
       </Form>
     </div>
