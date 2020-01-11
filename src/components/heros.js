@@ -30,6 +30,7 @@ const Heros=(props)=>
   const [showCreateHero, setCreateHero] = useState(false);
     useEffect( ()=>{get_heros(props.heros_handler)},[]);
     console.log("props.hero ",props);
+
     return(
        <div> 
     <Nav_bar_main username={props.user.username} is_search={true}/>
@@ -38,6 +39,8 @@ const Heros=(props)=>
       <div  style={{padding:"15px"}}>
         <Button className="justify-content-end" onClick={()=>setCreateHero(true)}>+ New Hero</Button>
         </div>
+
+        
     <Table hover responsive={true}>
   <thead>
    

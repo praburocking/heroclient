@@ -11,6 +11,8 @@ import { Provider } from 'react-redux'
 import Dash_board from './components/dash_board'
 import {verifyAndGetToken,find_user_cookie_put_to_store} from './util/common_utils'
 import DetailView from './components/detailpage'
+import User from './components/user'
+import {StripeProvider} from 'react-stripe-elements';
 
 
 
@@ -22,7 +24,7 @@ function App(props) {
   }
   return (
   <div >
-      {/* <Route exact path='/' render={()=>username?<Notes/>:<Redirect to="/login"/>}></Route> */}
+  <StripeProvider apiKey="pk_test_9radQ2WXLrFFlDGV0XqNMUkw00PoyDNs29">
       <Provider store={props.store}>
       <Router >
       <Route exact path ="/signup" render={()=>verifyAndGetToken()?<Redirect to="/dashboard"/>:<Signup/>} />
@@ -30,10 +32,13 @@ function App(props) {
       <Route exact path ="/dashboard" render={()=>verifyAndGetToken()?<Dash_board/>:<Redirect to="/login"/>}/>
       <Route exact path ="/heros" render={()=>verifyAndGetToken()?<Heros/>:<Redirect to="/login"/>}/>
       <Route exact path="/" render={()=>verifyAndGetToken()?<Redirect to="/dashboard"/>:<Redirect to="/login"/>}/>
-      <Route exact path="*" render={()=>verifyAndGetToken()?<Redirect to="/dashboard"/>:<Redirect to="/login"/>}/>
+     
       <Route exact path ="/heros/:id" render={({match})=>verifyAndGetToken()?<DetailView currentHero={match.params.id}/>:<Redirect to="/login"/>}/>
+      <Route exact path ="/user" render={({match})=>verifyAndGetToken()?<User />:<Redirect to="/login"/>}/>
+      {/* <Route exact path="*" render={()=>verifyAndGetToken()?<Redirect to="/dashboard"/>:<Redirect to="/login"/>}/> */}
       </Router>
       </Provider>
+      </StripeProvider>
       
   
   </div>

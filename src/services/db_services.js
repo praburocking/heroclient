@@ -5,14 +5,15 @@ require('dotenv').config()
 console.log("server url",process.env.SERVER_URL);
 
 let url=process.env.SERVER_URL
-//url="http://localhost:3001/api/"
-url="https://prabuheros-server.herokuapp.com/api/"
+url="http://localhost:3001/api/"
+//url="https://prabuheros-server.herokuapp.com/api/"
 
 let hero_url=url+"hero";
 let login_url=url+"login";
 let user_url=url+"users";
 let logout_url=url+"logout";
 let signup_url=url+"signup"
+let payment_url=url+"pay"
 
 export const signup=(userData)=>
 {
@@ -43,4 +44,9 @@ return axios.get(hero_url+"/search?search_term="+search,setAuthorizationHeader()
 export const add_hero=(hero)=>
 {
 return axios.post(hero_url,hero,setAuthorizationHeader()).then(response=>response).catch((error)=>error.response);
+}
+
+export const add_payment=()=>
+{
+return axios.post(payment_url,null,setAuthorizationHeader()).then(response=>response).catch((error)=>error.response);
 }

@@ -84,6 +84,8 @@ const Create_hero=(props)=>
     <Form.Label>Arch Enemy</Form.Label>
     <FormControl name="arch_enemy"  type="text" />
   </FormGroup>
+
+  
  
       </Modal.Body>
       <Modal.Footer>

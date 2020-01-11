@@ -83,10 +83,10 @@ if(props.hero && currentHero)
 </Table>
         
         </Col>
-        <Col>
+        <Col style={{background:currentHero.color}}> 
        
 
-        <div className="container emp-profile">
+        <div className="container emp-profile" >
             <form method="post">
                 <div className="row">
                     <div className="col-md-4">
