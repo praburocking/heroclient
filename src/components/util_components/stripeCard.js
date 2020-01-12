@@ -3,6 +3,8 @@ import {CardElement} from 'react-stripe-elements';
 import {Modal,Button,Form, FormControl,Row,Col} from 'react-bootstrap'
 import {add_payment} from '../../services/db_services'
 import constants from '../../util/constants'
+import {connect} from 'react-redux'
+import {state_to_props} from '../../util/common_utils'
 
 
 
@@ -38,7 +40,7 @@ const handlePay=async (event)=>
       Name
     </Form.Label>
     <Col sm="10">
-      <Form.Control plaintext readOnly defaultValue={"name"} />
+      <Form.Control plaintext readOnly defaultValue={props.user.username} />
     </Col>
   </Form.Group>
         <CardElement style={{base: {fontSize: '18px'}}} />
@@ -52,4 +54,4 @@ const handlePay=async (event)=>
   }
 
 
-export default StripeCard;
+export default connect(state_to_props)(StripeCard);
