@@ -13,8 +13,7 @@ import {verifyAndGetToken,find_user_cookie_put_to_store} from './util/common_uti
 import DetailView from './components/detailpage'
 import User from './components/user'
 import {StripeProvider} from 'react-stripe-elements';
-
-
+require('dotenv').config()
 
 function App(props) {
   if(store.user===null || store.user===undefined)
@@ -24,7 +23,7 @@ function App(props) {
   }
   return (
   <div >
-  <StripeProvider apiKey="pk_test_9radQ2WXLrFFlDGV0XqNMUkw00PoyDNs29">
+  <StripeProvider apiKey={process.env.NODE_ENV==="development"?process.env.REACT_APP_TEST_STRIPE_PK:process.env.REACT_APP_PRODUCTION_STRIPE_PK}>
       <Provider store={props.store}>
       <Router >
       <Route exact path ="/signup" render={()=>verifyAndGetToken()?<Redirect to="/dashboard"/>:<Signup/>} />
